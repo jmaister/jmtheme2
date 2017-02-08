@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+        {% block head %}
+        <title>{{ SITENAME }} - {% block title %}Home{% endblock title %}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="{{SITENAME}}. {{ SITESUBTITLE }}.">
+
+        <!--Add SEO pagemap-->
+        {% include 'seo_pagemap.html' %}
+
+        <!-- styles -->
+        <link rel="stylesheet" href="//unpkg.com/purecss@0.6.2/build/pure-min.css">
+        <link rel="stylesheet" href="//unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+
+        <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/foundation-icons/foundation-icons.css">
+
+        <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/blog.css">
+        <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/main.css">
+
+        {% if GOOGLE_PLUS_ID %}
+            <!-- SEO: g+ -->
+            <link rel="author" href="https://plus.google.com/{{GOOGLE_PLUS_ID}}"/>
+   		{% endif %}
+
+        {% endblock head %}
+</head>
+<body>
+    <div id="layout" class="pure-g">
+        <div class="sidebar pure-u-1 pure-u-md-1-4">
+            <div class="header">
+                <h1 class="brand-title"><a class="navbar-brand" href="/">{{ SITENAME }}</a></h1>
+                <h2 class="brand-tagline">{{ SITESUBTITLE }}</h2>
+
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item {% if page_name == 'index' %}active{% endif %}">
+                            <a class="pure-button" href="/">Blog</a>
+                        </li>
+
+                        {% if DISPLAY_PAGES_ON_MENU %}
+                          {% for p in PAGES %}
+                            <li class="nav-item {% if p == page %}active{% endif %}">
+                              <a class="pure-button" href="/{{ p.url }}">{{ p.title }}</a>
+                            </li>
+                          {% endfor %}
+                        {% endif %}
+
+                        <li class="nav-item {% if page_name == 'archives' %}active{% endif %}">
+                          <a class="pure-button" href="/archives.html">Archive</a>
+                        </li>
+                        <li class="nav-item {% if page_name == 'tags' %}active{% endif %}">
+                          <a class="pure-button" href="/tags.html">Tags</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="pure-menu pure-menu-horizontal">
+                    {% include 'socialicons.html' %}
+                </div>
+            </div>
+        </div>
+
+        <div class="content pure-u-1 pure-u-md-3-4">
+            {% block content %}
+            {% endblock %}
+
+            <div>
+                <div class="footer">
+                    <div class="pure-menu pure-menu-horizontal">
+                        {% include 'socialicons.html' %}
+                    </div>
+                    <div>
+                        <!-- categories -->
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-heading">Categories</li>
+                            {% for cat, null in categories %}
+                              <li class="pure-menu-item {% if cat == category %}active{% endif %}">
+                                  <a href="/{{ cat.url }}"><i class="fi-folder medium"></i> {{ cat }}</a>
+                              </li>
+                            {% endfor %}
+                        </ul>
+                        <!-- categories -->
+                    </div>
+                    <div>
+                        &copy;
+                        <!-- SEO: vcard -->
+                        <address id="hcard-Jordi-Burgos" class="vcard author">
+                            <a class="name" href="/author/jordi-burgos.html" rel="canonical">{{AUTHOR}}</a>
+                            <a class="fn" href="/author/jordi-burgos.html" rel="canonical">{{AUTHOR}}</a>
+                            <img src="http://i.imgur.com/GoIhFqm.jpg" alt="photo of " class="photo"/>
+                            <span class="title">Software Engineer</span>
+                            <span class="org">jordiburgos.com</span>
+                            <a class="url" href="http://jordiburgos.com">jordiburgos.com</a>
+                            <a class="email" href="mailto:jordiburgos@gmail.com">jordiburgos@gmail.com</a>
+                            <span class="address">
+                                <span class="region">Dublin</span>
+                                <span class="country-name">Ireland</span>
+                            </span>
+                        </address>
+                        2013-2017.
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Add statistycs-->
+    {% include 'analytics.html' %}
+
+    <!-- article specific JS -->
+    {% if article and article.js %}
+        <script src="{{ SITEURL }}{{article.js}}"></script>
+    {% endif %}
+
+</body>
+</html>

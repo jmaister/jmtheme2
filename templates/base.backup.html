@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+        {% block head %}
+        <title>{{ SITENAME }} - {% block title %}Home{% endblock title %}</title>
+        <meta charset="utf-8" />
+        {% if FEED_ALL_ATOM %}
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+        {% endif %}
+        {% if FEED_ALL_RSS %}
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+        {% endif %}
+        {% if FEED_ATOM %}
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+        {% endif %}
+        {% if FEED_RSS %}
+        <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+        {% endif %}
+        {% if CATEGORY_FEED_ATOM and category %}
+        <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
+        {% endif %}
+        {% if CATEGORY_FEED_RSS and category %}
+        <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS|format(category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />
+        {% endif %}
+        {% if TAG_FEED_ATOM and tag %}
+        <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM|format(tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />
+        {% endif %}
+        {% if TAG_FEED_RSS and tag %}
+        <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
+        {% endif %}
+
+        <!--Add SEO pagemap-->
+        {% include 'seo_pagemap.html' %}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+        <style>
+            {% include "min.css" %}
+	    </style>
+
+
+        {% if GOOGLE_PLUS_ID %}
+            <!-- SEO: g+ -->
+            <link rel="author" href="https://plus.google.com/{{GOOGLE_PLUS_ID}}"/>
+   		{% endif %}
+
+        {% endblock head %}
+</head>
+
+<body id="index">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu_collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div id="menu_collapse" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+
+      <li class="{% if page_name == 'index' %}active{% endif %}"><a href="{{ SITEURL }}"><i class="fi-home small"></i> Blog</a> </li>
+
+      {% if DISPLAY_PAGES_ON_MENU %}
+        {% for p in PAGES %}
+          <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}"><i class="fi-{{p.icon}} small"></i> {{ p.title }}</a></li>
+        {% endfor %}
+      {% endif %}
+
+      <li class="{% if page_name == 'archives' %}active{% endif %}"><a href="{{ SITEURL }}/archives.html"><i class="fi-folder"></i> Archive</a></li>
+      <li class="{% if page_name == 'tags' %}active{% endif %}"><a href="{{ SITEURL }}/tags.html"><i class="fi-flag"></i> Tags</a> </li>
+    </ul>
+  </div>
+</nav>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron">
+                    <h1><a href="{{ SITEURL }}">{{ SITENAME }}</a></h1>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <small>{{ SITESUBTITLE }}</small>
+                        </div>
+                        <div class="col-sm-6">
+                            {% include 'socialicons.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+
+        <footer id="footer" class="navbar-default">
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                            &copy;
+                            <!-- SEO: vcard -->
+                            <address id="hcard-Jordi-Burgos" class="vcard author">
+                                <a class="name" href="{{ SITEURL }}/author/jordi-burgos.html" rel="canonical">{{AUTHOR}}</a>
+                                <a class="fn" href="{{ SITEURL }}/author/jordi-burgos.html" rel="canonical">{{AUTHOR}}</a>
+                                <img src="http://i.imgur.com/GoIhFqm.jpg" alt="photo of " class="photo"/>
+                                <span class="title">Software Engineer</span>
+                                <span class="org">jordiburgos.com</span>
+                                <a class="url" href="http://jordiburgos.com">jordiburgos.com</a>
+                                <a class="email" href="mailto:jordiburgos@gmail.com">jordiburgos@gmail.com</a>
+                                <span class="address">
+                                    <span class="region">Valencia</span>
+                                    <span class="country-name">Spain</span>
+                                </span>
+                            </address>
+                            2013-2017.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <!-- categories -->
+                        <ul class="list-group">
+                            <li class="list-group-item">Categories</li>
+                            {% for cat, null in categories %}
+                              <li class="list-group-item {% if cat == category %}active{% endif %}">
+                                  <a href="{{ SITEURL }}/{{ cat.url }}"><i class="fi-folder medium"></i> {{ cat }}</a>
+                              </li>
+                            {% endfor %}
+                        </ul>
+                        <!-- categories -->
+                    </div>
+                    <div class="col-sm-3">
+                        {% include 'socialicons.html' %}
+                    </div>
+                </div>
+        </footer>
+
+        <!--Add statistycs-->
+        {% include 'analytics.html' %}
+
+    {% if article and article.js %}
+        <script src="{{ SITEURL }}{{article.js}}"></script>
+    {% endif %}
+</body>
+</html>

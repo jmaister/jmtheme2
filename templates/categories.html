@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+<h1>Categories</h1>
+
+<dl>
+{% for category, articles in categories|sort %}
+    <dt>{{ category }}</dt>
+    {% for article in articles|sort %}
+        <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+    {% endfor %}
+{% endfor %}
+</dl>
+{% endblock %}

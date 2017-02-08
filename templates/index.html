@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="content">
+
+{% for article in articles_page.object_list|sort(attribute='date', reverse=True) %}
+<section class="post">
+    <header class="post-header">
+        <img alt="{{ article.author }}'s avatar" class="post-avatar" src="{{GRAVATAR_IMAGE}}" height="48" width="48">
+        <h2 class="post-title">{{ article.title }}</h2>
+
+        <p class="post-meta">
+            {% include 'article_info.html' %}
+        </p>
+    </header>
+
+    <div class="post-description">
+        {{ article.summary }}
+    </div>
+</section>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading title">
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+        </div>
+        <div class="panel-body">
+                {% include 'article_info.html' %}
+        </div>
+        <div class="panel-body">
+
+            {{ article.summary }}
+
+            <a class="btn btn-success" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">Continue reading &rarr;</a>
+        </div>
+    </div>
+{% endfor %}
+{% include 'pagination.html' %}
+</section><!-- /#content -->
+{% endblock content %}

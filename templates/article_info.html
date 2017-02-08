@@ -1,0 +1,37 @@
+By <a href="/{{ article.author.url }}" class="post-author">{{ article.author }}</a> under
+{% for tag in article.tags|sort %}
+    <a class="post-category post-category-design" href="/{{tag.url}}">{{tag}}</a>
+{% endfor %}
+{% if article.readtime %}
+<div><b>Read in {{article.readtime.minutes}} min.</b></div>
+{% endif %}
+
+<!--
+{% if article.author %}
+By <span><a href="{{ SITEURL }}/{{ article.author.url }}" rel="author" class="author p-author">{{ article.author }}</a></span>
+{% endif %}
+<span>
+ on <abbr class="published dt-published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
+</span>
+
+{% if article.category %}
+<span class="info-margin">
+    <a class="url p-category" href="{{ SITEURL }}/{{ article.category.url }}" rel="tag"><i class="fi-folder small"></i> {{ article.category }}</a>
+</span>
+{% endif %}
+
+<span class="info-margin">
+{% for tag in article.tags|sort %}
+    <span class="info-tag p-category"><a href="{{ SITEURL }}/{{tag.url}}" rel="tag"><i class="fi-flag small"></i> {{tag}}</a></span>
+{% endfor %}
+</span>
+
+<span class="info-margin">
+    {% import 'translations.html' as translations with context %}
+    {{ translations.translations_for(article) }}
+</span>
+
+{% if article.readtime %}
+<div><b>Read in {{article.readtime.minutes}} min.</b></div>
+{% endif %}
+-->
