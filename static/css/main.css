@@ -1,3 +1,10 @@
+/* pagination */
+a.pure-button-disabled {
+    pointer-events: none;
+    opacity: .4;
+    border: none;
+}
+
 /* for the icons */
 .large {
     font-size: 50px;

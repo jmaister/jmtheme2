@@ -1,19 +1,18 @@
 {% if DEFAULT_PAGINATION %}
-<ul class="pagination">
-        <!-- SEO: better indexing with rel="prev" and rel="next" -->
-        {% if articles_page.has_previous() %}
-                {% set num = articles_page.previous_page_number() %}
-                <li class="prev"><a href="{{ SITEURL }}/{{ page_name }}{{ num if num > 1 else '' }}.html" rel="prev">&laquo;</a></li>
-        {% else %}
-                <li class="prev disabled"><a href="#">&laquo;</a></li>
-        {% endif %}
-        {% for num in range( 1, 1 + articles_paginator.num_pages ) %}
-                <li class="{{ 'active' if num == articles_page.number else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ num if num > 1 else '' }}.html">{{ num }}</a></li>
-        {% endfor %}
-        {% if articles_page.has_next() %}
-                <li class="next"><a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html" rel="next">&raquo;</a></li>
-        {% else %}
-                <li class="next disabled"><a href="#">&raquo;</a></li>
-        {% endif %}
-</ul>
+<div class="pure-button-group" role="group" aria-label="...">
+    {% if articles_page.has_previous() %}
+        {% set num = articles_page.previous_page_number() %}
+        <a class="pure-button" href="{{ SITEURL }}/{{ page_name }}{{ num if num > 1 else '' }}.html" rel="prev">&laquo;</a></li>
+    {% else %}
+        <a class="pure-button pure-button-disabled" href="#">&laquo;</a>
+    {% endif %}
+    {% for num in range( 1, 1 + articles_paginator.num_pages ) %}
+        <a class="pure-button {{ 'active' if num == articles_page.number else '' }}"href="{{ SITEURL }}/{{ page_name }}{{ num if num > 1 else '' }}.html">{{ num }}</a>
+    {% endfor %}
+    {% if articles_page.has_next() %}
+        <a class="pure-button" href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html" rel="next">&raquo;</a>
+    {% else %}
+        <a class="pure-button pure-button-disabled" href="#">&raquo;</a>
+    {% endif %}
+</div>
 {% endif %}
