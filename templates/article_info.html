@@ -1,6 +1,10 @@
-By <a href="/{{ article.author.url }}" class="post-author">{{ article.author }}</a> under
+By <a href="/{{ article.author.url }}" class="post-author" rel="author">{{ article.author }}</a>
+<span>
+ on <abbr class="published dt-published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
+</span>
+under
 {% for tag in article.tags|sort %}
-    <a class="post-category post-category-design" href="/{{tag.url}}">{{tag}}</a>
+    <a class="post-category post-category-design" href="/{{tag.url}}" rel="tag">{{tag}}</a>
 {% endfor %}
 {% if article.readtime %}
 <div><b>Read in {{article.readtime.minutes}} min.</b></div>
