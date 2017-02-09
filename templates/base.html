@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="//unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
 
         <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/foundation-icons/foundation-icons.css">
+        <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/pygments.css">
 
         <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/blog.css">
         <link rel="stylesheet" href="/{{ THEME_STATIC_DIR }}/css/main.css">
@@ -56,9 +57,7 @@
                     </ul>
                 </nav>
 
-                <div class="pure-menu pure-menu-horizontal">
-                    {% include 'socialicons.html' %}
-                </div>
+                {% include 'socialicons.html' %}
             </div>
         </div>
 

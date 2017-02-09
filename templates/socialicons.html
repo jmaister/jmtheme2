@@ -1,3 +1,12 @@
+<div>
+    {% for name, link in SOCIAL %}
+        <a href="{{ link }}" title="{{ name }}" target="_blank" rel="me"><i class="fi-social-{{ name }} large"></i></a>
+    {% endfor %}
+    {% if EMAIL %}
+        <a href="mailto:{{ EMAIL }}"  title="e-Mail" target="_blank" rel="me"><i class="fi-mail large"></i></a>
+    {% endif %}
+</div>
+<!--
 <ul >
     {% for name, link in SOCIAL %}
         <li class="pure-menu-item">
@@ -10,3 +19,4 @@
         </li>
     {% endif %}
 </ul>
+-->
