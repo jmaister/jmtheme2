@@ -26,31 +26,18 @@ div.readtime {
     margin-top: 3px;
     font-weight: bold;
 }
-/* for the icons */
-.large {
-    font-size: 50px;
-    line-height: 50px;
-    padding: 0 10px;
-}
-.medium {
-    font-size: 30px;
-    padding: 0 5px;
-}
-.small {
-    font-size: 15px;
-    padding: 0 5px;
-}
 
+/* for the icons */
 i[class^='fi-'] {
     text-shadow: 0 1px 3px rgba(0,0,0,0.25);
     color: #A9014B;
 }
 div.sidebar i[class^='fi-'] {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 div.footer i[class^='fi-'] {
-    font-size: 50px;
+    font-size: 25px;
 }
 
 

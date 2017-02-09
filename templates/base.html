@@ -72,14 +72,15 @@
                     </div>
                     <div>
                         <!-- categories -->
-                        <ul class="pure-menu-list">
-                            <li class="pure-menu-heading">Categories</li>
-                            {% for cat, null in categories %}
-                              <li class="pure-menu-item {% if cat == category %}active{% endif %}">
-                                  <a href="/{{ cat.url }}"><i class="fi-folder medium"></i> {{ cat }}</a>
-                              </li>
-                            {% endfor %}
-                        </ul>
+                        <div class="pure-menu pure-menu-horizontal">
+                            <ul class="pure-menu-list">
+                                {% for cat, null in categories %}
+                                  <li class="pure-menu-item {% if cat == category %}active{% endif %}">
+                                      <a class="pure-menu-link" href="/{{ cat.url }}"><i class="fi-folder small"></i> {{ cat }}</a>
+                                  </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                         <!-- categories -->
                     </div>
                     <div>
