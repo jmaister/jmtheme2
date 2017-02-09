@@ -5,6 +5,27 @@ a.pure-button-disabled {
     border: none;
 }
 
+/* tags */
+.post-category-java {
+    background-color: rgb(188, 0, 0);
+}
+.post-category-javascript {
+    background-color: rgb(248,220,61);
+    color: black;
+}
+.post-category-hadoop {
+    background-color: rgb(244,221,79);
+    color: black;
+}
+.post-category-excel {
+    background-color: rgb(32,114,69);
+}
+
+/* readtime */
+div.readtime {
+    margin-top: 3px;
+    font-weight: bold;
+}
 /* for the icons */
 .large {
     font-size: 50px;
