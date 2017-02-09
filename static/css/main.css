@@ -1,3 +1,10 @@
+
+/* posts */
+
+.post-title a {
+    color: rgb(33, 33, 33);
+}
+
 /* pagination */
 a.pure-button-disabled {
     pointer-events: none;
@@ -30,7 +37,7 @@ div.readtime {
 /* for the icons */
 i[class^='fi-'] {
     text-shadow: 0 1px 3px rgba(0,0,0,0.25);
-    color: #A9014B;
+    color: rgb(61, 146, 201); /*#A9014B;*/
 }
 div.sidebar i[class^='fi-'] {
     font-size: 35px;
