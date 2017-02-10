@@ -1,0 +1,12 @@
+{% if TWITTER_USERNAME %}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="{{TWITTER_USERNAME}}" />
+    <meta name="twitter:image" content="{{GRAVATAR_IMAGE}}" />
+    {% if article %}
+        <meta name="twitter:title" content="{{article.title|striptags}}" />
+        <meta name="twitter:description" content="Article: {{article.title|striptags}}" />
+    {% else %}
+        <meta name="twitter:title" content="{{SITENAME}}" />
+        <meta name="twitter:description" content="{{SITESUBTITLE}}" />
+    {% endif %}
+{% endif %}
